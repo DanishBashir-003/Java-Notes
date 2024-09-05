@@ -105,3 +105,119 @@ In this case, `Dog` overrides the `sound()` method of `Animal` to provide a spec
 #### Key Takeaway:
 - **Overloading** is used for methods that perform similar tasks but require different inputs.
 - **Overriding** is used when a subclass needs to provide its own behavior for an inherited method.
+
+Here are some frequently searched Java interview questions with clear and in-depth answers:
+
+### 1. **What is the difference between `==` and `equals()` in Java?**
+   - **`==` Operator:** In Java, the `==` operator is used to compare the memory addresses of objects to check if they refer to the same instance. For primitive data types (like `int`, `char`, etc.), it compares the actual values.
+   - **`equals()` Method:** The `equals()` method, defined in the `Object` class, is used to compare the contents of two objects to check if they are logically equal. For example, when comparing two `String` objects, `equals()` checks if the characters in the strings are the same, rather than comparing their memory addresses.
+
+   **Example:**
+   ```java
+   String str1 = new String("hello");
+   String str2 = new String("hello");
+
+   // Using == operator
+   System.out.println(str1 == str2); // Output: false
+
+   // Using equals() method
+   System.out.println(str1.equals(str2)); // Output: true
+   ```
+
+### 2. **What is the purpose of the `final` keyword in Java?**
+   - **`final` Variable:** A `final` variable can be initialized only once, either when it’s declared or within a constructor. After that, it cannot be modified.
+   - **`final` Method:** A method declared as `final` cannot be overridden by subclasses, ensuring that the method's behavior remains consistent across all instances.
+   - **`final` Class:** A class declared as `final` cannot be extended or subclassed. This is often used to create immutable classes.
+
+   **Example:**
+   ```java
+   final class ImmutableClass {
+       final int value = 10;
+
+       final void display() {
+           System.out.println("Value: " + value);
+       }
+   }
+
+   // The following code will cause a compilation error:
+   // class SubClass extends ImmutableClass { }
+   ```
+
+### 3. **What are Java’s access modifiers, and how do they work?**
+   - **`private`:** The member is accessible only within its own class.
+   - **`default` (no modifier):** The member is accessible only within classes in the same package.
+   - **`protected`:** The member is accessible within its own package and by subclasses.
+   - **`public`:** The member is accessible from any other class.
+
+   **Example:**
+   ```java
+   public class AccessModifiers {
+       private int privateVar = 1;
+       int defaultVar = 2;
+       protected int protectedVar = 3;
+       public int publicVar = 4;
+
+       public void display() {
+           System.out.println("Private: " + privateVar);
+           System.out.println("Default: " + defaultVar);
+           System.out.println("Protected: " + protectedVar);
+           System.out.println("Public: " + publicVar);
+       }
+   }
+   ```
+
+### 4. **What is the difference between an abstract class and an interface in Java?**
+   - **Abstract Class:** An abstract class can have both abstract methods (without a body) and concrete methods (with a body). It is used when classes share common behavior but need to implement some details differently.
+   - **Interface:** An interface can only have abstract methods (until Java 8, which introduced default and static methods). It is used to define a contract that implementing classes must follow, allowing for multiple inheritance (since a class can implement multiple interfaces).
+
+   **Example:**
+   ```java
+   abstract class Animal {
+       abstract void sound();
+
+       void eat() {
+           System.out.println("Eating...");
+       }
+   }
+
+   interface Pet {
+       void play();
+   }
+
+   class Dog extends Animal implements Pet {
+       void sound() {
+           System.out.println("Bark");
+       }
+
+       public void play() {
+           System.out.println("Playing fetch");
+       }
+   }
+   ```
+
+### 5. **What is multithreading in Java, and how is it achieved?**
+   - **Multithreading:** Multithreading in Java is a process where multiple threads run concurrently within a program to perform multiple tasks simultaneously, improving performance for tasks like web services, games, and heavy computations.
+   - **How to Achieve Multithreading:** Java provides the `Thread` class and the `Runnable` interface to create and manage threads.
+
+   **Example:**
+   ```java
+   class MyThread extends Thread {
+       public void run() {
+           for (int i = 0; i < 5; i++) {
+               System.out.println(Thread.currentThread().getName() + " is running");
+           }
+       }
+   }
+
+   public class MultithreadingExample {
+       public static void main(String[] args) {
+           MyThread t1 = new MyThread();
+           MyThread t2 = new MyThread();
+
+           t1.start();
+           t2.start();
+       }
+   }
+   ```
+
+These are some of the frequently asked Java interview questions, each explained with clear concepts and practical examples to help you prepare effectively.
